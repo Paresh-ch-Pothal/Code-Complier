@@ -1,0 +1,62 @@
+.mode{
+    cursor: pointer;
+}
+.homePage{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100vh;
+    justify-content: space-between;
+    padding: 10px 10px;
+}
+.left{
+    width: 20%;
+    height: 100%;
+    border: 2px solid red;
+    border-radius: 10px;
+}
+.middle{
+    width: 39.5%;
+    height: 100%;
+    border: 2px solid red;
+    border-radius: 10px;
+}
+.right{
+    width: 39.5%;
+    height: 100%;
+    border: 2px solid red;
+    border-radius: 10px;
+}
+.line{
+    width: 90%;
+    margin: auto;
+    height: 0.2px;
+    opacity: 0.4;
+}
+.listFile li{
+    list-style: none;
+    padding: 7px 7px;
+    border-bottom: 1px solid black;
+    margin-top: 4px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+}
+.listFile li:hover{
+    background-color: rgba(182, 215, 200, 0.566);
+}
+.addButton{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 10px;
+}
+.middletop{
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 10px;
+}
+.runCode{
+    cursor: pointer;
+}
