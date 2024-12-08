@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import { MdOutlineLightMode } from "react-icons/md";
 import { IoMoon } from "react-icons/io5";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Navbar = (props) => {
 
+    const navigate=useNavigate();
     let clicktogglemode = () => {
         if (props.mode == "light") {
             document.body.style.backgroundColor = "#151515";
@@ -15,6 +16,15 @@ const Navbar = (props) => {
             document.body.style.backgroundColor = "white";
             document.body.style.color = "black";
             props.setmode("light")
+        }
+    }
+
+    const handleLogout=()=>{
+        try {
+            localStorage.removeItem("token");
+            navigate("/signup")
+        } catch (error) {
+            
         }
     }
     return (
@@ -37,19 +47,12 @@ const Navbar = (props) => {
                             <li className="nav-item">
                                 <Link className="nav-link" to="/about">About</Link>
                             </li>
-                            <li className="nav-item dropdown">
-                                <a className="nav-link dropdown-toggle" href="/" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Select Langauge
-                                </a>
-                                <ul className="dropdown-menu">
-                                    <li><a className="dropdown-item" style={{cursor: "pointer"}}>Python</a></li>
-                                    <li><a className="dropdown-item" style={{cursor: "pointer"}}>C++</a></li>
-                                    <li><a className="dropdown-item" style={{cursor: "pointer"}}>C</a></li>
-                                    <li><a className="dropdown-item" style={{cursor: "pointer"}}>Web File</a></li>
-                                    <li><a className="dropdown-item" style={{cursor: "pointer"}}>Java</a></li>
-                                </ul>
-                            </li>
                         </ul>
+                        {localStorage.getItem("token") ? 
+                        <Link onClick={handleLogout} type="button" className="btn btn-info mx-2">Logout</Link> :
+                        <div>
+                        <Link type="button" className="btn btn-info mx-2" to='/signin'>Signin</Link>
+                        <Link type="button" className="btn btn-info mx-2" to='signup'>Signup</Link></div> }
                         <MdOutlineLightMode onClick={clicktogglemode} color='white' size={25} className='mode' style={{ display: props.mode === "dark" ? "block" : "none" }} />
                         <IoMoon color='white' onClick={clicktogglemode} size={25} className='mode' style={{ display: props.mode === "light" ? "block" : "none" }} />
                     </div>
