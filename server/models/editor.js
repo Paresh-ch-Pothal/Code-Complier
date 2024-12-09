@@ -5,11 +5,13 @@ const EditorSchema=new mongoose.Schema({
         type: String,
         required: true
     },
-    language:{
+    codeHtml:{
         type: String,
-        required: true
     },
-    code:{
+    codeCss:{
+        type: String,
+    },
+    codeJs:{
         type: String,
     },
     user:{

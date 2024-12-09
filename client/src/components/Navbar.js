@@ -6,18 +6,6 @@ import { Link, useNavigate } from 'react-router-dom';
 const Navbar = (props) => {
 
     const navigate=useNavigate();
-    let clicktogglemode = () => {
-        if (props.mode == "light") {
-            document.body.style.backgroundColor = "#151515";
-            document.body.style.color = "white";
-            props.setmode("dark")
-        }
-        else {
-            document.body.style.backgroundColor = "white";
-            document.body.style.color = "black";
-            props.setmode("light")
-        }
-    }
 
     const handleLogout=()=>{
         try {
@@ -48,13 +36,6 @@ const Navbar = (props) => {
                                 <Link className="nav-link" to="/about">About</Link>
                             </li>
                         </ul>
-                        {localStorage.getItem("token") ? 
-                        <Link onClick={handleLogout} type="button" className="btn btn-info mx-2">Logout</Link> :
-                        <div>
-                        <Link type="button" className="btn btn-info mx-2" to='/signin'>Signin</Link>
-                        <Link type="button" className="btn btn-info mx-2" to='signup'>Signup</Link></div> }
-                        <MdOutlineLightMode onClick={clicktogglemode} color='white' size={25} className='mode' style={{ display: props.mode === "dark" ? "block" : "none" }} />
-                        <IoMoon color='white' onClick={clicktogglemode} size={25} className='mode' style={{ display: props.mode === "light" ? "block" : "none" }} />
                     </div>
                 </div>
             </nav>
